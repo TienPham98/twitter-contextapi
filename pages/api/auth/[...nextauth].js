@@ -39,6 +39,20 @@ export const authOptions = {
       session.user.uid = token.sub;
       return session;
     },
+     async signIn({ account, profile }) {
+      console.debug(">>>> signIn callback", account, profile);
+      if (account.provider === "google") {
+        return profile.email_verified && profile.email.endsWith("myhost.com");
+      }
+      return false;
+    },
+    async redirect({ url, baseUrl }) {
+      console.log(process.env.HTTPS_PROXY);
+      console.debug(">>>> redirect callback", url, baseUrl);
+      if (url.startsWith("/")) return `${baseUrl}${url}`;
+      if (new URL(url).origin === baseUrl) return url;
+      return baseUrl;
+    }
   },
 
   secret: process.env.NEXTAUTH_SECRET,
