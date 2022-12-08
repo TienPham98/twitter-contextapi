@@ -12,6 +12,12 @@ export const authOptions = {
   ],
   // get tagname and convertVie
   callbacks: {
+    async signIn({ account, profile }) {
+      if (account.provider === "google") {
+        return profile.email_verified && profile.email.endsWith("@example.com");
+      }
+      return true;
+    },
     async session({ session, token }) {
       session.user.tag = session.user.name
         .split(" ")
