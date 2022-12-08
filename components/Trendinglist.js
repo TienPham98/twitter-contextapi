@@ -7,7 +7,7 @@ const TrendingList = () => {
       <div>
         <p className="text-gray-500 text-[14px] mb-1">Business · LIVE</p>
         <h1 className="font-medium pr-2">
-          CNBC: Dogecoin is up 35% since Monday as Elon Musk’s deal to buy
+          CNBC: Dogecoin is up 35% since Monday as Elon Musks deal to buy
           Twitter approaches a close.
         </h1>
       </div>
